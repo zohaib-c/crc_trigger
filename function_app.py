@@ -11,7 +11,6 @@ def http_trigger(req: func.HttpRequest) -> func.HttpResponse:
 
     table_conn_str = os.environ["TABLE_CONN_STR"]
     table_client = TableClient.from_connection_string(conn_str=table_conn_str, table_name="visitorCount")
-
     entity = table_client.get_entity(partition_key="VisitorCount", row_key="CurrentCount")
 
     count = entity["count"] + 1
